@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: 10 23 27;
+  --primary-foreground: 255 255 255;
+  --secondary: 57 72 76;
+  --secondary-foreground: 255 255 255;
+  --destructive: 46 16 16;
+  --destructive-foreground: 255 255 255;
+  --tertiary: 28 64 74;
+  --tertiary-foreground: 255 255 255;
+}
