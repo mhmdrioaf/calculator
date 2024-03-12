@@ -67,7 +67,9 @@ export default function Calculator() {
 
   return (
     <div className="w-1/3 flex flex-col gap-4">
-      <p className="text-2xl text-primary font-bold text-center">Calculator</p>
+      <p className="text-2xl text-neutral-200 font-bold text-center">
+        BASIC CALCULATOR
+      </p>
 
       <Container>
         <Total overall={state.overall} total={state.total} />
@@ -137,6 +139,18 @@ export default function Calculator() {
           </div>
         </Body>
       </Container>
+
+      <p className="text-xs text-center text-neutral-200">
+        Made by{" "}
+        <a
+          href="https://twitter.com/oirioir"
+          className="underline"
+          target="_blank"
+        >
+          Rio Ananta
+        </a>
+        .
+      </p>
     </div>
   );
 }
