@@ -10,7 +10,7 @@ const Container = React.forwardRef<HTMLDivElement, IContainerProps>(
     return (
       <div
         className={twMerge(
-          "w-full flex flex-col gap-2 rounded-lg px-4 py-2 overflow-hidden shadow-md",
+          "w-full flex flex-col gap-2 rounded-lg px-4 py-4 overflow-hidden shadow-md bg-stone-800",
           className
         )}
         ref={ref}
