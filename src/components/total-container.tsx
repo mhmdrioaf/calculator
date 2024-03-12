@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 interface ITotalContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   overall: string | null;
-  total: string | number;
+  total: string | null;
 }
 
 const TotalContainer = React.forwardRef<HTMLDivElement, ITotalContainerProps>(
@@ -18,9 +18,11 @@ const TotalContainer = React.forwardRef<HTMLDivElement, ITotalContainerProps>(
         {...props}
       >
         <p className="text-sm text-amber-400">{overall}</p>
-        <p className="text-2xl" id="display">
-          {total}
-        </p>
+        <p
+          className="text-2xl"
+          id="display"
+          dangerouslySetInnerHTML={{ __html: total ?? "0" }}
+        />
       </div>
     );
   }

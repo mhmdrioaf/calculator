@@ -4,7 +4,7 @@ import { create, all } from "mathjs";
 export type TCalculatorContext = {
   state: {
     overall: string | null;
-    total: string;
+    total: string | null;
   };
   handler: {
     numberClick: (value: string) => void;
@@ -25,7 +25,7 @@ export function CalculatorProvider({
 }) {
   const [isResult, setIsResult] = React.useState<boolean>(false);
   const [overall, setOverall] = React.useState<string | null>(null);
-  const [total, setTotal] = React.useState<string>("0");
+  const [total, setTotal] = React.useState<string | null>(null);
   const math = create(all);
 
   const onNumberClick = (value: string) => {
@@ -53,12 +53,14 @@ export function CalculatorProvider({
         prev ? (isZeroAtLast(prev) ? prev : `${prev}${value}`) : value
       );
       setTotal((prev) =>
-        prev !== "0" && !actions.includes(prev) ? `${prev}${value}` : value
+        prev && prev !== "0" && !actions.includes(prev)
+          ? `${prev}${value}`
+          : value
       );
     } else {
       const isBeforeDot = overall?.slice(-1) === undefined ?? true;
 
-      if (total.indexOf(".") === -1) {
+      if (total?.indexOf(".") === -1) {
         setTotal((prev) => `${prev}${value}`);
         if (isBeforeDot) {
           setOverall((prev) => (prev ? `${prev}${value}` : `0${value}`));
@@ -100,7 +102,7 @@ export function CalculatorProvider({
   };
 
   const clearCalculator = () => {
-    setTotal("0");
+    setTotal(null);
     setOverall(null);
     setIsResult(false);
   };
